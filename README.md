@@ -63,6 +63,22 @@ The API uses JWT-based authentication. To access protected endpoints, you need t
    Authorization: Bearer <your_jwt_token>
    ```
 
+## GraphQL Server Url
+
+Once the application is running, you can access the GraphQL Server Url at:
+
+```
+http://localhost:5000
+```
+
+## GraphQL Playground
+
+Once the application is running, you can access the GraphQL Playground at:
+
+```
+http://localhost:5000/graphql
+```
+
 ## GraphQL Examples
 
 ### Protected Query Example: Fetch My Tasks
@@ -128,4 +144,6 @@ yarn test:e2e
 
 ## License
 
-MIT
+## Stay in touch
+
+- Author - [Wenceslas E. Jonah](https://github.com/wencesj)
