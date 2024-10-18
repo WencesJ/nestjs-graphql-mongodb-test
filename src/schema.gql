@@ -1,0 +1,104 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateTaskInput {
+  assignedTo: String
+  description: String!
+  priority: TaskPriorityEnum!
+  status: TaskStatusEnum
+  title: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type LoggedInDoc {
+  access_token: String!
+  user: UserDoc!
+}
+
+type MetadataDoc {
+  page: Float!
+  total: Float!
+}
+
+type Mutation {
+  createTask(createTaskInput: CreateTaskInput!): TaskDoc!
+  removeTask(id: ID!): TaskDoc!
+  updateTask(id: ID!, updateTaskInput: UpdateTaskInput!): TaskDoc!
+  userRegistration(userRegistration: RegisterUserInput!): UserDoc!
+  userStandardLogin(userStandardLogin: UserStandardLoginInput!): LoggedInDoc!
+}
+
+type Query {
+  myTasks(queryOptions: TaskFindAllArgs): TasksDataWithMetadata!
+  task(id: ID!): TaskDoc!
+  tasks(queryOptions: TaskFindAllArgs): TasksDataWithMetadata!
+}
+
+input RegisterUserInput {
+  email: String!
+  firstName: String!
+  lastName: String!
+  password: String!
+}
+
+type TaskDoc {
+  assignedTo: UserDoc
+  createdAt: DateTime!
+  description: String!
+  id: ID!
+  priority: String!
+  status: String!
+  title: String!
+  updatedAt: DateTime!
+}
+
+input TaskFindAllArgs {
+  limit: Int = 10
+  page: Int = 1
+  priority: TaskPriorityEnum
+  status: TaskStatusEnum
+}
+
+enum TaskPriorityEnum {
+  high
+  low
+  medium
+}
+
+enum TaskStatusEnum {
+  completed
+  in_progress
+  pending
+}
+
+type TasksDataWithMetadata {
+  data: [TaskDoc!]!
+  metadata: MetadataDoc!
+}
+
+input UpdateTaskInput {
+  assignedTo: String
+  description: String
+  priority: TaskPriorityEnum
+  status: TaskStatusEnum
+  title: String
+}
+
+type UserDoc {
+  createdAt: DateTime!
+  email: String!
+  firstName: String!
+  id: ID!
+  lastName: String!
+  updatedAt: DateTime!
+}
+
+input UserStandardLoginInput {
+  email: String!
+  password: String!
+}
